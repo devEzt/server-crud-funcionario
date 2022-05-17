@@ -62,4 +62,20 @@ router.get('/get-funcionario/:id', async (req, res) => {
   }
 })
 
+//edit dados de funcionario
+router.patch('/edit-funcionario/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const editFuncionario = await funcionarios.findByIdAndUpdate(id, req.body, {
+      new: true,
+    })
+    console.log(editFuncionario)
+
+    res.status(201).json(editFuncionario)
+  } catch (err) {
+    res.status(422).json(err)
+  }
+})
+
 module.exports = router
