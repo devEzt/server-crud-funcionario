@@ -78,4 +78,19 @@ router.patch('/edit-funcionario/:id', async (req, res) => {
   }
 })
 
+//deletar um funcionario
+router.delete('/delete-funcionario/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const deleteFuncionario = await funcionarios.findByIdAndDelete({ _id: id })
+
+    console.log(deleteFuncionario)
+
+    res.status(201).json(deleteFuncionario)
+  } catch (err) {
+    res.status(422).json(err)
+  }
+})
+
 module.exports = router
