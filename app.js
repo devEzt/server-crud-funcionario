@@ -15,6 +15,4 @@ app.use(express.json())
 
 app.use(router)
 
-app.listen(port, () => {
-  console.log(`server esta iniciando porta numero ${port}`)
-})
+app.listen(process.env.PORT || port)
