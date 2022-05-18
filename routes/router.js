@@ -34,7 +34,7 @@ router.get('/get-funcionarios', async (req, res) => {
     const funcionarioData = await funcionarios.find()
     res.status(200).json(funcionarioData)
   } catch (err) {
-    res.status(422).json(err)
+    res.status(500).json(err)
   }
 })
 
